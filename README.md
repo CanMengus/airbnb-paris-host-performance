@@ -53,11 +53,11 @@ Two tables of Airbnb listings in Paris (provided by Le Wagon):
 
 ### 1. Data modeling in BigQuery
 
-We organized the project in three layers, following a staging → intermediate → mart pattern:
+We organized the project in three BigQuery datasets, following a staging → intermediate → mart pattern:
 
 ```
 raw_data          → original tables (listing, calendar)
-intermediate      → views: stg_listing, stg_calender, listing_calender_joined
+intermediate      → staging views (stg_listing, stg_calender) and the joined view (listing_calender_joined)
 mart              → host_performance (one row per listing, ready for BI)
 ```
 
@@ -98,7 +98,7 @@ mart              → host_performance (one row per listing, ready for BI)
 ## Limitations
 
 - **Small groups:** The most expensive range (> €500) contains only 17 listings. An earlier version split it further into €500–1,000 and €1,000+, but the €1,000+ group had only 2 listings, so we merged them to avoid drawing conclusions from too few data points. Shared rooms (1 listing) were excluded from the room-type comparison.
-- **Booking window:** Occupancy appears to drop from September to January, but this is most likely because later dates had not been booked yet when the data was collected, not because of real seasonality. I therefore left the monthly trend out of the main findings.
+- **Booking window:** Occupancy appears to drop from September to January, but this is most likely because later dates had not been booked yet when the data was collected, not because of real seasonality. We therefore left the monthly trend out of the main findings.
 - **Correlation, not causation:** The analysis shows associations. Price changes would need to be tested (e.g. with an A/B test) before concluding that they cause higher occupancy.
 
 ---
@@ -131,3 +131,5 @@ Google BigQuery (SQL) · Looker Studio · Data modeling (staging / intermediate 
 
 - **Can Mengus** · [LinkedIn](https://linkedin.com/in/canmengus) · [GitHub](https://github.com/CanMengus)
 - **Mohamad Hajo** · [LinkedIn](https://www.linkedin.com/in/mohamad-hajo-83231715b/)
+
+All parts of the project were built together.
